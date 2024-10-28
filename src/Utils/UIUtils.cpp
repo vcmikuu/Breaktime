@@ -4,15 +4,14 @@
 #include "HMUI/CurvedCanvasSettingsHelper.hpp"
 #include "UnityEngine/UI/LayoutElement.hpp"
 #include "UnityEngine/Vector3.hpp"
-#include "questui/shared/ArrayUtil.hpp"
-#include "questui/shared/BeatSaberUI.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 
-#include "questui/shared/CustomTypes/Components/Backgroundable.hpp"
 #include "UnityEngine/GameObject.hpp"
 
 using namespace UnityEngine::UI;
-using namespace QuestUI;
-using namespace QuestUI::BeatSaberUI;
+using namespace BSML;
 using namespace HMUI;
 
 namespace UIUtils {

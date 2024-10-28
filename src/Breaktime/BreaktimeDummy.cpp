@@ -8,8 +8,9 @@
 #include "UnityEngine/Texture2D.hpp"
 #include "UnityEngine/WaitForSeconds.hpp"
 #include "UnityEngine/TextureWrapMode.hpp"
-#include "questui/shared/QuestUI.hpp"
-#include "questui/shared/BeatSaberUI.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 #include "PluginConfig.hpp"
 #include "main.hpp"
 
@@ -104,15 +105,15 @@ namespace Breaktime {
     void BreaktimeDummy::CreateScreen(){
         createdUI = false;
 
-        screen = BeatSaberUI::CreateFloatingScreen({75, 75}, {0, 1.5f, 6}, Quaternion::get_identity().get_eulerAngles(), 0, false, false, 4);
+        screen = BSML::Lite::CreateFloatingScreen({75, 75}, {0, 1.5f, 6}, Quaternion::get_identity().get_eulerAngles(), 0, false, false, 4);
         screen->get_gameObject()->SetActive(true);
         
-        UI::VerticalLayoutGroup* vertical = BeatSaberUI::CreateVerticalLayoutGroup(screen->get_transform());
+        UI::VerticalLayoutGroup* vertical = BSML::Lite::CreateVerticalLayoutGroup(screen->get_transform());
         vertical->set_childAlignment(TextAnchor::MiddleCenter);
 
-        Sprite* sprite = BeatSaberUI::FileToSprite(getPluginConfig().ImagePath.GetValue());
+        Sprite* sprite = BSML::Lite::FileToSprite(getPluginConfig().ImagePath.GetValue());
 
-        image = BeatSaberUI::CreateImage(vertical->get_transform(), sprite,
+        image = BSML::Lite::CreateImage(vertical->get_transform(), sprite,
             {0, 0}, {0.0f, 0.0f});
 
         if (getPluginConfig().ScaleX.GetValue() == 
@@ -126,7 +127,7 @@ namespace Breaktime {
 
         static ConstString Text = "0.00";        
 
-        text = BeatSaberUI::CreateText(vertical->get_transform(), "0.00", false);
+        text = BSML::Lite::CreateText(vertical->get_transform(), "0.00", false);
         text->set_alignment(TMPro::TextAlignmentOptions::Center);
         text->set_fontSize(20);
 

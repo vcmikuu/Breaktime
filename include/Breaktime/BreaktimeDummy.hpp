@@ -1,7 +1,9 @@
 #pragma once
 
 #include "TMPro/TextMeshProUGUI.hpp"
-#include "questui/shared/CustomTypes/Components/FloatingScreen/FloatingScreen.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 #include "UnityEngine/AudioSource.hpp"
 #include "UnityEngine/AudioClip.hpp"
 #include "UnityEngine/UI/Button.hpp"
@@ -12,7 +14,7 @@
 using namespace custom_types;
 using namespace UnityEngine;
 using namespace UnityEngine::UI;
-using namespace QuestUI;
+using namespace BSML;
 using namespace TMPro;
 using namespace HMUI;
 

@@ -1,7 +1,9 @@
 #pragma once
 
 #include "TMPro/TextMeshProUGUI.hpp"
-#include "questui/shared/CustomTypes/Components/FloatingScreen/FloatingScreen.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 #include "UnityEngine/AudioSource.hpp"
 #include "UnityEngine/AudioClip.hpp"
 #include "GlobalNamespace/AudioTimeSyncController.hpp"

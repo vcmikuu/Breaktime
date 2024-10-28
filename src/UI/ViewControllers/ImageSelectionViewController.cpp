@@ -4,11 +4,15 @@
 #include "Utils/UIUtils.hpp"
 #include "Utils/FileUtils.hpp"
 #include "HMUI/Touchable.hpp"
-#include "questui/shared/BeatSaberUI.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 #include "UnityEngine/WaitForSeconds.hpp"
 #include "UnityEngine/UI/HorizontalLayoutGroup.hpp"
 #include "GlobalNamespace/SharedCoroutineStarter.hpp"
-#include "questui/shared/CustomTypes/Components/Backgroundable.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 
 #include <map>
 
@@ -16,10 +20,9 @@ DEFINE_TYPE(Breaktime::UI, ImageSelectionViewController);
 
 using namespace HMUI;
 using namespace TMPro;
-using namespace QuestUI;
+using namespace BSML;
 using namespace UnityEngine;
 using namespace UnityEngine::UI;
-using namespace QuestUI::BeatSaberUI;
 
 #define SetPreferredSize(identifier, width, height)                                         \
     auto layout##identifier = identifier->get_gameObject()->GetComponent<LayoutElement*>(); \
@@ -114,10 +117,10 @@ namespace Breaktime::UI {
 
                     if (path.compare(std::string(imagePath)) == 0){
                         button->set_interactable(false);
-                        BeatSaberUI::AddHoverHint(button->get_gameObject(), "Already Selected!");
+                        BSML::Lite::AddHoverHint(button->get_gameObject(), "Already Selected!");
                     }else{
                         button->set_interactable(true);
-                        BeatSaberUI::AddHoverHint(button->get_gameObject(), "");
+                        BSML::Lite::AddHoverHint(button->get_gameObject(), "");
                     }
                 }
 
@@ -138,7 +141,7 @@ namespace Breaktime::UI {
 
             if (getPluginConfig().ImagePath.GetValue().compare(imagePath) == 0){
                 select->set_interactable(false);
-                BeatSaberUI::AddHoverHint(select->get_gameObject(), "Already Selected!");
+                BSML::Lite::AddHoverHint(select->get_gameObject(), "Already Selected!");
 
                 name->SetText(il2cpp_utils::newcsstr("<i><color=\"green\">" + fileName + "</color></i>"));
             }

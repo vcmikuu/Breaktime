@@ -1,7 +1,9 @@
 #include "main.hpp"
 #include "../include/PluginConfig.hpp"
 #include "UI/BreaktimeFlowCoordinator.hpp"
-#include "questui/shared/QuestUI.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 
 static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
 
@@ -39,9 +41,9 @@ extern "C" void setup(ModInfo& info) {
 // Called later on in the game loading - a good time to install function hooks
 extern "C" void load() {
     il2cpp_functions::Init();
-    QuestUI::Init();
+    BSML::Init();
     custom_types::Register::AutoRegister();
-    QuestUI::Register::RegisterMainMenuModSettingsFlowCoordinator
+    BSML::Register::RegisterMainMenuModSettingsFlowCoordinator
         <Breaktime::UI::BreaktimeFlowCoordinator*>(modInfo);
 
     getLogger().info("Installing hooks...");

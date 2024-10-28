@@ -17,14 +17,15 @@
 #include "UnityEngine/WaitForSeconds.hpp"
 #include "UnityEngine/TextureWrapMode.hpp"
 #include "UnityEngine/DepthTextureMode.hpp"
-#include "questui/shared/QuestUI.hpp"
-#include "questui/shared/BeatSaberUI.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 #include "PluginConfig.hpp"
 #include "main.hpp"
 
 DEFINE_TYPE(Breaktime, BreaktimeModule);
 
-using namespace QuestUI;
+using namespace BSML;
 using namespace custom_types;
 
 namespace Breaktime {
@@ -54,7 +55,7 @@ namespace Breaktime {
         {
             AudioClip* clip = UnityEngine::Networking::DownloadHandlerAudioClip::GetContent(www);
             audioController->StartCoroutine(Helpers::CoroutineHelper::New(HandleBreak(time, 
-            {BeatSaberUI::FileToSprite(getPluginConfig().ImagePath.GetValue()),
+            {BSML::Lite::FileToSprite(getPluginConfig().ImagePath.GetValue()),
             clip})));
             getLogger().info("Handling Break");
         }
@@ -178,7 +179,7 @@ namespace Breaktime {
 
         if (!screen)
         {
-            screen = BeatSaberUI::CreateFloatingScreen({75, 75}, {0, 1.5f, 6}, Quaternion::get_identity().get_eulerAngles(), 0, false, false, 4);
+            screen = BSML::Lite::CreateFloatingScreen({75, 75}, {0, 1.5f, 6}, Quaternion::get_identity().get_eulerAngles(), 0, false, false, 4);
             screen->get_gameObject()->SetActive(false);
         }else{
             screen->get_gameObject()->SetActive(true);
@@ -186,12 +187,12 @@ namespace Breaktime {
 
         if (!image)
         {
-            UI::VerticalLayoutGroup* vertical = BeatSaberUI::CreateVerticalLayoutGroup(screen->get_transform());
+            UI::VerticalLayoutGroup* vertical = BSML::Lite::CreateVerticalLayoutGroup(screen->get_transform());
             vertical->set_childAlignment(TextAnchor::MiddleCenter);
 
-            Sprite* sprite = BeatSaberUI::FileToSprite(getPluginConfig().ImagePath.GetValue());
+            Sprite* sprite = BSML::Lite::FileToSprite(getPluginConfig().ImagePath.GetValue());
 
-            image = BeatSaberUI::CreateImage(vertical->get_transform(), sprite,
+            image = BSML::Lite::CreateImage(vertical->get_transform(), sprite,
                 {0, 0}, {0.0f, 0.0f});
 
             if (round(getPluginConfig().ScaleX.GetValue()) == 
@@ -203,7 +204,7 @@ namespace Breaktime {
             elem->set_preferredHeight(50.0f * getPluginConfig().ScaleY.GetValue());
             elem->set_preferredWidth(70.0f * getPluginConfig().ScaleX.GetValue());
 
-            text = BeatSaberUI::CreateText(vertical->get_transform(), timeText, false, {0, 0});
+            text = BSML::Lite::CreateText(vertical->get_transform(), timeText, false, {0, 0});
             text->set_alignment(TMPro::TextAlignmentOptions::Center);
             text->set_fontSize(20);
 

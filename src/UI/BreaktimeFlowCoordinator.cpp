@@ -2,13 +2,14 @@
 
 #include "HMUI/ViewController_AnimationDirection.hpp"
 #include "HMUI/ViewController_AnimationType.hpp"
-#include "questui/shared/BeatSaberUI.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 
 DEFINE_TYPE(Breaktime::UI, BreaktimeFlowCoordinator);
 
 using namespace HMUI;
-using namespace QuestUI;
-using namespace QuestUI::BeatSaberUI;
+using namespace BSML;
 
 namespace Breaktime::UI {
 

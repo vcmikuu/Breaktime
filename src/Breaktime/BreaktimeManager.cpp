@@ -16,11 +16,13 @@
 #include "GlobalNamespace/BeatmapEnvironmentHelper.hpp"
 #include "../include/PluginConfig.hpp"
 
-#include "questui/shared/ArrayUtil.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 
 #include "main.hpp"
 
-using namespace QuestUI;
+using namespace BSML;
 using namespace Breaktime;
 using namespace System;    
 using namespace custom_types;    

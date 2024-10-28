@@ -19,7 +19,9 @@
 #include "Breaktime/BreaktimeManager.hpp"
 #include "Breaktime/BreaktimeModule.hpp"
 #include "UnityEngine/Resources.hpp"
-#include "questui/shared/ArrayUtil.hpp"
+#include "bsml/shared/BSML.hpp"
+#include "bsml/shared/BSML/Components/ExternalComponents.hpp"
+#include "bsml/shared/BSML/MainThreadScheduler.hpp"
 #include "PluginConfig.hpp"
 
 using namespace Breaktime;
